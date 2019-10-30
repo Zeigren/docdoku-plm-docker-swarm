@@ -1,0 +1,739 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"enab",
+				"enablePin"
+			],
+			[
+				"i",
+				"if\tIf Condition"
+			],
+			[
+				"adj",
+				"adjustRegulator"
+			],
+			[
+				"buttonD",
+				"buttonDetect"
+			],
+			[
+				"bu",
+				"buttonState"
+			],
+			[
+				"butto",
+				"buttonDirection"
+			],
+			[
+				"ma",
+				"machVal"
+			],
+			[
+				"pin",
+				"pinMode"
+			],
+			[
+				"dac",
+				"dacVal"
+			],
+			[
+				"l",
+				"li\tTag"
+			],
+			[
+				"o",
+				"ol\tTag"
+			],
+			[
+				"h",
+				"html\thtml"
+			],
+			[
+				"he",
+				"header\tTag"
+			],
+			[
+				"tr",
+				"traefikcert"
+			],
+			[
+				"H",
+				"H1\tTag"
+			],
+			[
+				"nginx",
+				"nginx-proxy"
+			],
+			[
+				"con",
+				"context"
+			],
+			[
+				"en",
+				"environment"
+			],
+			[
+				"mag",
+				"magento2php"
+			],
+			[
+				"be",
+				"begin"
+			],
+			[
+				"led",
+				"led_2"
+			],
+			[
+				"sys",
+				"sys_rst_n"
+			],
+			[
+				"spi_",
+				"spi_irq_n"
+			],
+			[
+				"out",
+				"output"
+			],
+			[
+				"for",
+				"foreach"
+			],
+			[
+				"dis",
+				"displayHeader"
+			],
+			[
+				"str",
+				"strobingMonitor"
+			],
+			[
+				"ss",
+				"ss_n"
+			],
+			[
+				"cmd",
+				"cmd_rdy"
+			],
+			[
+				"TEST",
+				"TEST_SUITE"
+			],
+			[
+				"spi",
+				"spi_irq_n"
+			],
+			[
+				"beg",
+				"beg\tbegin .. end"
+			],
+			[
+				"test",
+				"test_suite"
+			],
+			[
+				"TEST_",
+				"TEST_SUITE"
+			],
+			[
+				"neg",
+				"negedge"
+			],
+			[
+				"begin",
+				"begin"
+			],
+			[
+				"SCK",
+				"SCK_F"
+			],
+			[
+				"SC",
+				"SCK_F"
+			],
+			[
+				"al",
+				"always_ff\talways_ff Async"
+			],
+			[
+				"inte",
+				"integer"
+			],
+			[
+				"mos",
+				"mosi_reg"
+			],
+			[
+				"sck",
+				"sck_reg"
+			],
+			[
+				"alw",
+				"always_ffs\talways_ff Sync"
+			],
+			[
+				"always",
+				"always_ff_nr\talways_ff No reset"
+			],
+			[
+				"virt",
+				"virt_sck"
+			],
+			[
+				"end",
+				"endtask\tendtask : automatic"
+			],
+			[
+				"yellow",
+				"yellow7"
+			],
+			[
+				"pu",
+				"purple"
+			],
+			[
+				"Q",
+				"QuartusRegen\tTemplate for QuartusRegen.py"
+			],
+			[
+				"vu",
+				"vunit"
+			],
+			[
+				"vun",
+				"VUnit"
+			],
+			[
+				"file",
+				"file_name\tstatement"
+			],
+			[
+				"tb_uart_",
+				"tb_uart_lib"
+			],
+			[
+				"quat",
+				"quartus_version_full\tstatement"
+			],
+			[
+				"qu",
+				"quartus_version\tstatement"
+			],
+			[
+				"it",
+				"items\tfunction"
+			],
+			[
+				"su",
+				"suffix"
+			],
+			[
+				"item",
+				"item_string"
+			],
+			[
+				"enu",
+				"enumerate_src_files\tfunction"
+			],
+			[
+				"line",
+				"liney\tstatement"
+			],
+			[
+				"read",
+				"readlines\tfunction"
+			],
+			[
+				"clo",
+				"close\tfunction"
+			],
+			[
+				"re",
+				"readlines\tfunction"
+			],
+			[
+				"wr",
+				"write"
+			],
+			[
+				"src",
+				"src_files\tstatement"
+			],
+			[
+				"top",
+				"topfile_replace"
+			],
+			[
+				"q",
+				"quartus_filetypes\tstatement"
+			],
+			[
+				"path",
+				"pathlib\tmodule"
+			],
+			[
+				"create",
+				"create_quartus_qpf"
+			],
+			[
+				"pa",
+				"Path\tclass"
+			],
+			[
+				"sv",
+				"sv"
+			],
+			[
+				"cre",
+				"createVUnitpy\tCreate VUnit run.py Template "
+			],
+			[
+				"writ",
+				"write\tfunction"
+			],
+			[
+				"Device",
+				"DeviceMigration"
+			],
+			[
+				"w",
+				"writelines\tfunction"
+			],
+			[
+				"P",
+				"Popen\tclass"
+			],
+			[
+				"tes",
+				"testes"
+			],
+			[
+				"clk",
+				"clk_en"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Discover Packages"
+			],
+			[
+				"hugo",
+				"Hugofy : Start Server"
+			],
+			[
+				"oacka",
+				"Package Control: Install Package"
+			],
+			[
+				"lint",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: re",
+				"Package Control: Remove Package"
+			],
+			[
+				"diff",
+				"Set Syntax: Diff"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: pac",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: dock",
+				"Package Control: Discover Packages"
+			],
+			[
+				"verilog",
+				"Verilog: Reindent"
+			],
+			[
+				"ver",
+				"Verilog: Alignment"
+			],
+			[
+				"veri",
+				"Verilog: Alignment"
+			],
+			[
+				"scop",
+				"Scope Hunter: Toggle Instant Scoper"
+			],
+			[
+				"verilo",
+				"Verilog: Alignment"
+			],
+			[
+				"veril",
+				"Verilog: Alignment"
+			],
+			[
+				"color",
+				"Color Scheme Editor: Edit current color scheme"
+			],
+			[
+				"scope",
+				"Scope Hunter: Toggle Instant Scoper"
+			],
+			[
+				"colo",
+				"Color Scheme Editor: Edit current color scheme"
+			],
+			[
+				" preview",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"markdown",
+				"Markdown Preview: Open Markdown Cheat sheet"
+			],
+			[
+				" html",
+				"Markdown Preview: Save to HTML"
+			],
+			[
+				"mar",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"Packa",
+				"Package Control: Install Package"
+			],
+			[
+				"create",
+				"HDLProject: Create HDL Project"
+			],
+			[
+				"Package Control: Install Package",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Contro",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 158.0,
+		"history":
+		[
+			"ls",
+			"C:\\intelFPGA_lite\\18.0\\quartus\\bin64\\cygwin\\Cygwin.bat",
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/F/Webserver/docdoku-plm-docker-swarm"
+	],
+	"file_history":
+	[
+		"/F/Altium/Library/Aluminium/.gitignore",
+		"/E/Downloads/cern_ohl_v_1_2 (1).txt",
+		"/F/Altium/Templates/Opensource/README.TXT",
+		"/E/Downloads/cern_ohl_v_1_2.txt",
+		"/F/Altium/Exports/Opensource Files/README.TXT",
+		"/F/Altium/Exports/Opensource Files/CHANGES.TXT",
+		"/F/Altium/Templates/Opensource/CHANGES.TXT",
+		"/F/Altium/Templates/Opensource/Licence/CHANGES.TXT",
+		"/F/Altium/Projects/FlashcatUSB Boards/.gitignore",
+		"/F/Altium/Projects/Keep Dreaming/MapleBreakout/.gitignore",
+		"/F/Altium/Projects/Keep Dreaming/openGDROM/Release/Gerbers/openGDROM.TXT",
+		"/F/Altium/Projects/Keep Dreaming/openGDROM/Project Outputs for openGDROM/Board Information - openGDROM.txt",
+		"/F/Altium/Projects/Keep Dreaming/openGDROM/Project Outputs for openGDROM/Net Status - openGDROM.txt",
+		"/F/Altium/Projects/Keep Dreaming/openGDROM/Release/Status Report.Txt",
+		"/F/Altium/Library/Aluminium/README.md",
+		"/F/Altium/Projects/Keep Dreaming/MapleBreakout/Release/Gerbers/Status Report.Txt",
+		"/F/Altium/Reference Boards/SAMV71-Xplained-Ultra_Design-Documentation/revision 12/Pick Place/Pick Place for SAM V71 Xplained Ultra_release_rev12.txt",
+		"/E/Downloads/Awesome-CV-master/Awesome-CV-master/awesome-cv.cls",
+		"/E/Downloads/resume (38).txt",
+		"/E/Downloads/resume (40).txt",
+		"/E/Downloads/resume (39).txt",
+		"/E/Downloads/resume (37).txt",
+		"/E/Downloads/resume (36).txt",
+		"/E/Downloads/resume (34).txt",
+		"/E/Downloads/resume (35).txt",
+		"/E/Downloads/resume (32).txt",
+		"/E/Downloads/resume (33).txt",
+		"/E/Downloads/resume (27).txt",
+		"/E/Downloads/resume (28).txt",
+		"/E/Downloads/resume (31).txt",
+		"/E/Downloads/resume (30).txt",
+		"/E/Downloads/resume (29).txt",
+		"/E/Downloads/resume (25).txt",
+		"/E/Downloads/resume (26).txt",
+		"/E/Downloads/resume (24).txt",
+		"/E/Downloads/resume (23).txt",
+		"/E/Downloads/resume (21).txt",
+		"/E/Downloads/resume (22).txt",
+		"/E/Downloads/resume (20).txt",
+		"/E/Downloads/resume (18).txt",
+		"/E/Downloads/resume (19).txt",
+		"/E/Downloads/resume (17).txt",
+		"/E/Downloads/resume (16).txt",
+		"/E/Desktop/Jobs/PCBCV/awesome-cv.cls",
+		"/E/Downloads/resume (14).txt",
+		"/E/Downloads/resume (13).txt",
+		"/E/Downloads/resume (15).txt",
+		"/E/Downloads/resume (12).txt",
+		"/E/Downloads/resume (10).txt",
+		"/E/Downloads/resume (11).txt",
+		"/E/Downloads/resume (9).txt",
+		"/E/Downloads/PCBCV (4).txt",
+		"/E/Downloads/PCBCV (2).txt",
+		"/E/Downloads/PCBCV.txt",
+		"/E/Downloads/Awesome_CV.txt",
+		"/E/Downloads/resume.txt",
+		"/F/GitHub/docker/duplicati/docker-compose.yml",
+		"/E/Downloads/Brett Turner Resume PCB (5).txt",
+		"/E/Downloads/rishi-shahs-resume.txt",
+		"/E/Downloads/shubhika-bhardwajs-cv.txt",
+		"/E/Downloads/resume (4).txt",
+		"/E/Downloads/resume (5).txt",
+		"/E/Downloads/resume (6).txt",
+		"/E/Downloads/resume (7).txt",
+		"/E/Downloads/resume (8).txt",
+		"/E/Downloads/resume (3).txt",
+		"/E/Downloads/resume (1).txt",
+		"/E/Downloads/resume (2).txt",
+		"/E/Downloads/Moderncv Banking/New Text Document.txt",
+		"/E/Downloads/Awesome CV/New Text Document.txt",
+		"/F/GitHub/docker/bookstack/keepdreaming.yml",
+		"/F/GitHub/docker/bookstack/dreaming_vhost.conf",
+		"/F/GitHub/docker/docker-swarm-bookstack/README.md",
+		"/F/GitHub/docker/docker-swarm-bookstack/docker-stack.yml",
+		"/F/GitHub/docker/bookstack/dreamcast.yml",
+		"/F/GitHub/docker/docker-swarm-bookstack/Dockerfile",
+		"/F/GitHub/docker/docker-swarm-bookstack/docker-entrypoint.sh",
+		"/F/GitHub/docker/phabricator/docker-swarm.yml",
+		"/F/GitHub/docker/magento/docker-swarm.yml",
+		"/F/GitHub/docker/docker notes.txt",
+		"/F/GitHub/docker/bookstack/docker-swarm.yml",
+		"/F/Webserver/zeigren_homepage/README.md",
+		"/F/Webserver/originals/Logo/favicon/htmlhead.txt",
+		"/F/Webserver/originals/Logo/favicon/site.webmanifest",
+		"/F/GitHub/docker/synapse/docker-swarm.yml",
+		"/F/GitHub/docker/openproject/docker-swarm.yml",
+		"/F/Webserver/originals/Logo/favicon/browserconfig.xml",
+		"/F/GitHub/docker/magento/7.2-cli/Dockerfile",
+		"/F/GitHub/docker/magento/magento_vhostlocal.conf",
+		"/F/GitHub/docker/traefik_cert/docker-swarm.yml",
+		"/F/GitHub/docker/traefik/docker-swarm.yml",
+		"/F/GitHub/docker/magento/magento_vhost.conf",
+		"/F/GitHub/docker/magento/global.env",
+		"/F/GitHub/docker/portainer/docker-compose.yml",
+		"/F/GitHub/docker/portainer/docker-swarm.yml",
+		"/C/Users/Zeigren/AppData/Local/Arduino15/packages/arduino/hardware/samd_beta/1.6.25/variants/mkrvidor4000/linker_scripts/gcc/flash_with_bootloader.ld",
+		"/C/Users/Zeigren/AppData/Local/Arduino15/packages/arduino/hardware/samd_beta/1.6.25/variants/mkrvidor4000/variant.h",
+		"/C/Users/Zeigren/AppData/Local/Arduino15/packages/arduino/hardware/samd_beta/1.6.25/boards.txt",
+		"/C/Users/Zeigren/AppData/Local/Arduino15/packages/arduino/hardware/samd_beta/1.6.25/programmers.txt",
+		"/F/GitHub/docker/magento/7.2-fpm/Dockerfile",
+		"/F/GitHub/docker/magento-cloud-docker/images/php/7.2-cli/Dockerfile",
+		"/F/GitHub/docker/magento-official/docker-swarm.yaml",
+		"/F/GitHub/docker/magento/7.2-fpm/etc/php-fpm.conf",
+		"/F/GitHub/docker/magento-official/7.2-fpm/etc/php-fpm.conf",
+		"/F/GitHub/docker/magento-official/vhost.conf",
+		"/F/GitHub/docker/magento-cloud-docker/docker-swarm.yaml",
+		"/F/GitHub/docker/magento_official/docker-swarm.yaml",
+		"/E/Downloads/portainer-agent-stack (1).yml",
+		"/F/Webserver/portfolio/content/portfolio/ElectronicDesign.md",
+		"/F/GitHub/zeigren.github.io/_posts/2017-10-29-PS3-Downgrading-More-Info.md",
+		"/C/Users/Zeigren/AppData/Roaming/Sublime Merge/Packages/User/Preferences.sublime-settings",
+		"/E/Desktop/Flashcat/FCUSB_BUILD533_042818/Scripts/Autorun.ini",
+		"/E/Desktop/Flashcat/FCUSB_BUILD533_042818/Scripts/SB6180_SPI.fcs",
+		"/E/Desktop/Flashcat/FCUSB_BUILD533_042818/Scripts/SVF_Player.fcs",
+		"/E/Desktop/Flashcat/FCUSB_BUILD533_042818/Scripts/SB6120_SPI.fcs",
+		"/E/Desktop/Flashcat/FCUSB_BUILD533_042818/Scripts/Please.Submit.Your.Scripts.txt",
+		"/F/STM32IDE/L0TouchTest/Startup/startup_stm32l053c8tx.s",
+		"/F/MCU/STM32L0/en.stm32cubel0/STM32Cube_FW_L0_V1.11.0/Projects/32L0538DISCOVERY/Applications/TouchSensing/TouchSensing_Linear/readme.txt",
+		"/E/Downloads/podcasts_opml.xml",
+		"/F/MCU/STM32L0/en.stm32cubel0/STM32Cube_FW_L0_V1.11.0/Projects/32L0538DISCOVERY/Applications/TouchSensing/TouchSensing_Linear/SW4STM32/startup_stm32l053xx.s",
+		"/K/DETAILS.TXT",
+		"/K/FAIL.TXT",
+		"/C/Users/Zeigren/AppData/Local/Temp/Rar$DIa7316.18670/readme.txt",
+		"/F/Altium/Projects/FlashcatUSB Boards/Mach_PSU/Project Outputs for Mach_PSU/Fabrication/Mach_PSU-SlotHoles.TXT",
+		"/F/Altium/Projects/FlashcatUSB Boards/Mach_PSU/Project Outputs for Mach_PSU/Fabrication/Mach_PSU-RoundHoles.TXT",
+		"/F/Altium/Projects/FlashcatUSB Boards/Mach_Stencil/Project Outputs for Mach_Stencil/Fabrication/Mach_Stencil-RoundHoles.TXT",
+		"/F/Altium/Projects/FlashcatUSB Boards/Mach_Stencil/Project Outputs for Mach_Stencil/Fabrication/Mach_Stencil-SlotHoles.TXT",
+		"/F/Altium/Projects/FlashcatUSB Boards/Mach_Stencil/Project Outputs for Mach_Stencil/Fabrication/Mach_Stencil.TXT"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 105.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 41.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.markdown":
+	{
+		"height": 133.0
+	},
+	"pinned_build_system": "",
+	"project": "docdoku-plm-docker-swarm.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"dasp",
+				"src\\sdcard\\sdcard_spi.v"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 338.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 201.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
