@@ -1,2 +1,2 @@
-.idea/
-volumes/
+*.sublime-project
+*.sublime-workspace
