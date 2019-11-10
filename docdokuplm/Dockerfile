@@ -82,8 +82,6 @@ RUN \
 RUN \
  chown -R payara:payara /opt
 
-USER payara
-
 COPY docker-entrypoint.sh /
 
 RUN ["chmod", "+x", "/docker-entrypoint.sh"]
@@ -91,6 +89,8 @@ RUN ["chmod", "+x", "/docker-entrypoint.sh"]
 COPY env_secrets_expand.sh /
 
 RUN ["chmod", "+x", "/env_secrets_expand.sh"]
+
+USER payara
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
