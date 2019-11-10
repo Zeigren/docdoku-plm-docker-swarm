@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+cd /src/docdoku-web-front && npm run build --unsafe-perm --quiet && \
+mvn clean install -f /src/eplmp/pom.xml && \
+mvn clean install -f /src/docdoku-plm/pom.xml
+#mvn clean install dependency:copy-dependencies -f /src/docdoku-plm-sample-data/pom.xml

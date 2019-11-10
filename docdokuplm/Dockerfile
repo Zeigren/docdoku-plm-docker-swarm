@@ -74,12 +74,11 @@ RUN \
  rm /opt/ifcconvert.zip && \
  rm /opt/decimater.zip
 
-
 RUN \
  wget --quiet -O /opt/mysql-connector-java-5.1.46.zip ${MYSQL_CONNECTOR_URL} && \
  unzip -qq /opt/mysql-connector-java-5.1.46.zip -d /opt/ && \
  mkdir -p /opt/payara41/glassfish/domains/domain1/lib/ && \
- mv /opt/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar ${PAYARA_PATH}/glassfish/domains/domain1/lib/mysql-connector-java-5.1.46-bin.jar && \
+ mv /opt/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar /opt/glassfish/domains/domain1/lib/mysql-connector-java-5.1.46-bin.jar && \
  rm /opt/mysql-connector-java-5.1.46.zip && \
  rm -rf /opt/mysql-connector-java-5.1.46
 
@@ -88,3 +87,14 @@ RUN \
 
 USER payara
 
+COPY docker-entrypoint.sh /
+
+RUN ["chmod", "+x", "/docker-entrypoint.sh"]
+
+COPY env_secrets_expand.sh /
+
+RUN ["chmod", "+x", "/env_secrets_expand.sh"]
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+CMD ["/opt/bin/asadmin", "start-domain", "-v", "domain1"]

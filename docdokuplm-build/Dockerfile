@@ -45,3 +45,13 @@ RUN \
 	tar xvjf phantomjs-2.1.1-linux-x86_64.tar.bz2 -C /usr/local/share/ && \
 	ln -s /usr/local/share/phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin/ && \
     rm phantomjs-2.1.1-linux-x86_64.tar.bz2
+
+COPY init /usr/local/bin/
+COPY build /usr/local/bin/
+COPY deploy /usr/local/bin/
+
+RUN ["chmod", "+x", "/usr/local/bin/init"]
+RUN ["chmod", "+x", "/usr/local/bin/build"]
+RUN ["chmod", "+x", "/usr/local/bin/deploy"]
+
+CMD ["bash"]

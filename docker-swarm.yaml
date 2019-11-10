@@ -37,48 +37,67 @@ services:
 #    ports:
 #      - "13306:3306"
 
-  back:
-    image: docdoku-plm-docker_back
+  docdokuplm:
+    image: docdokuplm:latest
     depends_on:
-    - mariadb
-    - es
-    args:
-      - DOCDOKU_PLM_CODEBASE=https://docdokuplm.local:10080
+      - mariadb
+      - es
+    environment:
+      - DOCDOKU_PLM_CODEBASE=https://plm.YOURDOMAIN.com
       - HEAP_SIZE=1g
-      - AS_ADMIN_PASSWORD=changeit
+      - AS_ADMIN_PASSWORD=DOCKER-SECRET->AS_ADMIN_PASSWORD
       - JWT_ENABLED=true
-      - JWT_KEY=MyVerySecretPhrase
+      - JWT_KEY=DOCKER-SECRET->JWT_KEY
       - SESSION_ENABLED=false
       - BASIC_AUTH_ENABLED=false
-      - DATABASE_USER=docdokuplm_user
-      - DATABASE_PWD=changeit
-      - DATABASE_URL=jdbc:mysql://db:3306/docdokuplm?useSSL=false
-      - ES_SERVER_URI=http://es:9200
+      - DATABASE_USER=docdokuplm
+      - DATABASE_PWD=DOCKER-SECRET->docdokuplmsql_password
+      - DATABASE_URL=jdbc:mysql://localhost:3306/docdokuplm?useSSL=false
+      - ES_SERVER_PWD=DOCKER-SECRET->ES_SERVER_PWD
+      - ES_SERVER_USERNAME=elastic
+      - ES_SERVER_URI=http://localhost:9200
       - ES_SERVER_SHARDS=4
       - ES_SERVER_AUTO_EXPAND_REPLICAS=0-3
       - ES_SERVER_REPLICAS=0
-      - ES_SERVER_USERNAME=elastic
-      - ES_SERVER_PWD=changeme
-      - SMTP_HOST=smtp
-      - SMTP_PORT=1025
-      - SMTP_USER=user
-      - SMTP_FROM_ADDR=notifications@docdokuplm.local
-      #- ES_SERVER_AWS_SERVICE=
-      #- ES_SERVER_AWS_REGION=
-      #- ES_SERVER_AWS_KEY=
-      #- ES_SERVER_AWS_SECRET=
+      #- ES_SERVER_AWS_SERVICE
+      #- ES_SERVER_AWS_REGION
+      #- ES_SERVER_AWS_KEY
+      #- ES_SERVER_AWS_SECRET
+      #- SMTP_HOST=localhost
+      #- SMTP_PORT=25
+      #- SMTP_USER=myuser
+      #- SMTP_FROM_ADDR=notifications@docdokuplm.local
+      #- KEYSTORE_LOCATION /opt/payara41/dplm.jceks
+      - KEYSTORE_KEY_ALIAS=mykey
+      - KEYSTORE_PASS=DOCKER-SECRET->KEYSTORE_PASS
+      - KEYSTORE_KEY_PASS=DOCKER-SECRET->KEYSTORE_KEY_PASS
+      #- KEYSTORE_TYPE JCEKS
+      #- SOLIDWORKS_LICENSE_PATH /opt/plugins/solidworks/license.txt
+      #- SOLIDWORKS_SCHEMA_PATH /opt/plugins/solidworks/schema
+      #- CATIA_LICENSE_PATH /opt/plugins/catia/license.txt
+      #- OFFICE_PORT 8100
+      #- OFFICE_HOME /usr/lib/libreoffice
+      #- ASADMIN_PATH /opt/bin
+      #- DOMAIN_DIR /opt/glassfish/domains/domain1
+      #- VAULT_PATH /var/lib/docdoku/vault
+      #- NATIVE_LIBS /opt/native-libs
     volumes:
-    - autodeploy:/opt/payara41/glassfish/domains/domain1/autodeploy
-    - vault:/var/lib/docdoku/vault
-    - plugins:/opt/plugins
-    - native-libs:/opt/native-libs
+      - autodeploy:/opt/payara41/glassfish/domains/domain1/autodeploy
+      - vault:/var/lib/docdoku/vault
+      - plugins:/opt/plugins
+      - native-libs:/opt/native-libs
     networks:
-    - front
-    - db
-    - es
-    - back
+      - front
+      - db
+      - es
+      - back
     secrets:
-      - 
+      - AS_ADMIN_PASSWORD
+      - JWT_KEY
+      - docdokuplmsql_password
+      - ES_SERVER_PWD
+      - KEYSTORE_PASS
+      - KEYSTORE_KEY_PASS
 #    ports:
 #      - "18080:8080"
 #      - "14848:4848"
@@ -104,9 +123,13 @@ services:
     networks:
       - es
 
-  build-env:
-    image: docdoku-plm-docker_build-env
+  build:
+    image: docdokuplm-build:latest
+    environment:
+      - DOCDOKU_PLM_VERSION=2.5.6
     volumes:
+      - web-front:/volumes/web-front
+      - autodeploy:/volumes/autodeploy
       - src:/src
       - m2:/root/.m2
       - npm:/root/.npm
@@ -135,6 +158,16 @@ secrets:
   YOURDOMAIN.com.key:
     external: true
   dhparam.pem:
+    external: true
+  AS_ADMIN_PASSWORD:
+    external: true
+  JWT_KEY:
+    external: true
+  ES_SERVER_PWD:
+    external: true
+  KEYSTORE_PASS:
+    external: true
+  KEYSTORE_KEY_PASS:
     external: true
 
 networks:

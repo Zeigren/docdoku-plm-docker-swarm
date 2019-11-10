@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+SOURCES_DIR=/src
+DOCDOKU_PLM_VERSION=${DOCDOKU_PLM_VERSION:-2.5.6}
+
+unzip -q -o -d /volumes/web-front "${SOURCES_DIR}"/docdoku-web-front/target/docdoku-web-front.zip
+
+rm /volumes/autodeploy/eplmp-server-ear* 2> /dev/null
+rm /volumes/autodeploy/.autodeploystatus/eplmp-server-ear* 2> /dev/null
+cp "${SOURCES_DIR}/eplmp/eplmp-server/eplmp-server-ear/target/eplmp-server-ear.ear" "/volumes/autodeploy/"
+
+rm /volumes/autodeploy/converter* 2> /dev/null
+rm /volumes/autodeploy/importer* 2> /dev/null
+rm /volumes/autodeploy/.autodeploystatus/converter* 2> /dev/null
+rm /volumes/autodeploy/.autodeploystatus/importer* 2> /dev/null
+
+cp "${SOURCES_DIR}/docdoku-plm/converter-all/converter-all-ear/target/converter-all-ear-${DOCDOKU_PLM_VERSION}.ear" \
+   "${SOURCES_DIR}/docdoku-plm/converter-dae/converter-dae-ear/target/converter-dae-ear-${DOCDOKU_PLM_VERSION}.ear" \
+   "${SOURCES_DIR}/docdoku-plm/converter-ifc/converter-ifc-ear/target/converter-ifc-ear-${DOCDOKU_PLM_VERSION}.ear" \
+   "${SOURCES_DIR}/docdoku-plm/converter-obj/converter-obj-ear/target/converter-obj-ear-${DOCDOKU_PLM_VERSION}.ear" \
+   "${SOURCES_DIR}/docdoku-plm/converter-step/converter-step-ear/target/converter-step-ear-${DOCDOKU_PLM_VERSION}.ear" \
+   "${SOURCES_DIR}/docdoku-plm/importer-attributes/importer-attributes-ear/target/importer-attributes-ear-${DOCDOKU_PLM_VERSION}.ear" \
+    "/volumes/autodeploy/"
