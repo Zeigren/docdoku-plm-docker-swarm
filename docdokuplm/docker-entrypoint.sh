@@ -45,7 +45,7 @@ NATIVE_LIBS=${NATIVE_LIBS:-/opt/native-libs}
 
 if [[ ! -f "/opt/glassfish/domains/domain1/lib/mysql-connector-java-5.1.46-bin.jar" ]]; then
 	mkdir -p /opt/payara41/glassfish/domains/domain1/lib/
-	mv /opt/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar /opt/glassfish/domains/domain1/lib/mysql-connector-java-5.1.46-bin.jar
+	mv /opt/mysql-connector-java-5.1.46-bin.jar /opt/glassfish/domains/domain1/lib/mysql-connector-java-5.1.46-bin.jar
 	rm -rf /opt/mysql-connector-java-5.1.46
 	chown -R payara:payara /opt
 fi
