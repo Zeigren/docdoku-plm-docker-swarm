@@ -135,6 +135,9 @@ services:
       - npm:/root/.npm
     networks:
       - back
+    deploy:
+      restart_policy:
+        condition: none
 
 volumes:
   docdoku_db:
