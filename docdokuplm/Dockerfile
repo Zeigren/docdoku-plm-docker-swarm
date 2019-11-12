@@ -79,6 +79,7 @@ RUN \
  unzip -qq /opt/mysql-connector-java-5.1.46.zip -d /opt/ && \
  rm /opt/mysql-connector-java-5.1.46.zip && \
  mkdir -p /opt/payara41/glassfish/domains/domain1/lib/ && \
+ mkdir -p /opt/payara41/keystore/ && \
  mv /opt/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar /opt/payara41/glassfish/domains/domain1/lib/mysql-connector-java-5.1.46-bin.jar && \
  rm -rf /opt/mysql-connector-java-5.1.46
 
