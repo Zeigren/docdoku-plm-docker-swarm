@@ -43,13 +43,6 @@ DOMAIN_DIR=${DOMAIN_DIR:-/opt/payara41/glassfish/domains/domain1}
 VAULT_PATH=${VAULT_PATH:-/var/lib/docdoku/vault}
 NATIVE_LIBS=${NATIVE_LIBS:-/opt/native-libs}
 
-if [[ ! -f "/opt/glassfish/payara41/domains/domain1/lib/mysql-connector-java-5.1.46-bin.jar" ]]; then
-	mkdir -p /opt/payara41/glassfish/domains/domain1/lib/ &&
-	mv /opt/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar /opt/payara41/glassfish/domains/domain1/lib/mysql-connector-java-5.1.46-bin.jar &&
-	rm -rf /opt/mysql-connector-java-5.1.46 &&
-	chown -R payara:payara /opt
-fi
-
 if [[ ! -f "/opt/payara41/dplm.jceks" ]]; then
 	keytool -genseckey -storetype JCEKS -keyalg AES -keysize 256 -keystore ${KEYSTORE_LOCATION} -storepass ${KEYSTORE_PASS} -keypass ${KEYSTORE_KEY_PASS}
 fi

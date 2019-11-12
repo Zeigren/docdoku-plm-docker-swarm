@@ -77,7 +77,10 @@ RUN \
 RUN \
  wget --quiet -O /opt/mysql-connector-java-5.1.46.zip ${MYSQL_CONNECTOR_URL} && \
  unzip -qq /opt/mysql-connector-java-5.1.46.zip -d /opt/ && \
- rm /opt/mysql-connector-java-5.1.46.zip
+ rm /opt/mysql-connector-java-5.1.46.zip && \
+ mkdir -p /opt/payara41/glassfish/domains/domain1/lib/ && \
+ mv /opt/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar /opt/payara41/glassfish/domains/domain1/lib/mysql-connector-java-5.1.46-bin.jar && \
+ rm -rf /opt/mysql-connector-java-5.1.46
 
 RUN \
  chown -R payara:payara /opt
