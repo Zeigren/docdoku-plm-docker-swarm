@@ -97,4 +97,4 @@ USER payara
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
-CMD ["/opt/bin/asadmin", "start-domain", "-v", "domain1"]
+CMD ["/opt/payara41/bin/asadmin", "start-domain", "-v", "domain1"]

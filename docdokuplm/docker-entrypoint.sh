@@ -45,7 +45,7 @@ NATIVE_LIBS=${NATIVE_LIBS:-/opt/native-libs}
 
 if [[ ! -f "/opt/payara41/dplm.jceks" ]]; then
 	keytool -genseckey -storetype JCEKS -keyalg AES -keysize 256 -keystore ${KEYSTORE_LOCATION} -storepass ${KEYSTORE_PASS} -keypass ${KEYSTORE_KEY_PASS}
-fi
+
 
 cat > "/opt/tmpfile" <<EOF
 AS_ADMIN_PASSWORD=
@@ -105,5 +105,6 @@ EOF
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile stop-domain
  rm /opt/pwdfile
  rm /opt/tmpfile
+fi
 
 exec "$@"
