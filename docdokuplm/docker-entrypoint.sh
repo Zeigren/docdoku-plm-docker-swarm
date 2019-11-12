@@ -39,13 +39,13 @@ CATIA_LICENSE_PATH=${CATIA_LICENSE_PATH:-/opt/plugins/catia/license.txt}
 OFFICE_PORT=${OFFICE_PORT:-8100}
 OFFICE_HOME=${OFFICE_HOME:-/usr/lib/libreoffice}
 ASADMIN_PATH=${ASADMIN_PATH:-/opt/bin}
-DOMAIN_DIR=${DOMAIN_DIR:-/opt/glassfish/domains/domain1}
+DOMAIN_DIR=${DOMAIN_DIR:-/opt/payara41/glassfish/domains/domain1}
 VAULT_PATH=${VAULT_PATH:-/var/lib/docdoku/vault}
 NATIVE_LIBS=${NATIVE_LIBS:-/opt/native-libs}
 
-if [[ ! -f "/opt/glassfish/domains/domain1/lib/mysql-connector-java-5.1.46-bin.jar" ]]; then
+if [[ ! -f "/opt/glassfish/payara41/domains/domain1/lib/mysql-connector-java-5.1.46-bin.jar" ]]; then
 	mkdir -p /opt/payara41/glassfish/domains/domain1/lib/ &&
-	mv /opt/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar /opt/glassfish/domains/domain1/lib/mysql-connector-java-5.1.46-bin.jar &&
+	mv /opt/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar /opt/payara41/glassfish/domains/domain1/lib/mysql-connector-java-5.1.46-bin.jar &&
 	rm -rf /opt/mysql-connector-java-5.1.46 &&
 	chown -R payara:payara /opt
 fi
