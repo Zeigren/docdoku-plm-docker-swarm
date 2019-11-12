@@ -28,7 +28,7 @@ SMTP_HOST=${SMTP_HOST:-}
 SMTP_PORT=${SMTP_PORT:-}
 SMTP_USER=${SMTP_USER:-}
 SMTP_FROM_ADDR=${SMTP_FROM_ADDR:-}
-KEYSTORE_LOCATION=${KEYSTORE_LOCATION:-/opt/payara41/dplm.jceks}
+KEYSTORE_LOCATION=${KEYSTORE_LOCATION:-/opt/payara41/keystore/dplm.jceks}
 KEYSTORE_KEY_ALIAS=${KEYSTORE_KEY_ALIAS:-mykey}
 KEYSTORE_PASS=${KEYSTORE_PASS:-changeit}
 KEYSTORE_KEY_PASS=${KEYSTORE_KEY_PASS:-changeit}
@@ -43,9 +43,9 @@ DOMAIN_DIR=${DOMAIN_DIR:-/opt/payara41/glassfish/domains/domain1}
 VAULT_PATH=${VAULT_PATH:-/var/lib/docdoku/vault}
 NATIVE_LIBS=${NATIVE_LIBS:-/opt/native-libs}
 
-if [[ ! -f "/opt/payara41/dplm.jceks" ]]; then
+if [[ ! -f ${KEYSTORE_LOCATION} ]]; then
 	keytool -genseckey -storetype JCEKS -keyalg AES -keysize 256 -keystore ${KEYSTORE_LOCATION} -storepass ${KEYSTORE_PASS} -keypass ${KEYSTORE_KEY_PASS}
-
+fi
 
 cat > "/opt/tmpfile" <<EOF
 AS_ADMIN_PASSWORD=
@@ -105,6 +105,5 @@ EOF
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile stop-domain
  rm /opt/pwdfile
  rm /opt/tmpfile
-fi
 
 exec "$@"

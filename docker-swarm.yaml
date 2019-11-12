@@ -67,7 +67,7 @@ services:
       #- SMTP_PORT=25
       #- SMTP_USER=myuser
       #- SMTP_FROM_ADDR=notifications@docdokuplm.local
-      #- KEYSTORE_LOCATION /opt/payara41/dplm.jceks
+      #- KEYSTORE_LOCATION=/opt/payara41/keystore/dplm.jceks
       - KEYSTORE_KEY_ALIAS=mykey
       - KEYSTORE_PASS=DOCKER-SECRET->KEYSTORE_PASS
       - KEYSTORE_KEY_PASS=DOCKER-SECRET->KEYSTORE_KEY_PASS
@@ -83,6 +83,7 @@ services:
       #- NATIVE_LIBS /opt/native-libs
     volumes:
       - autodeploy:/opt/payara41/glassfish/domains/domain1/autodeploy
+      - keystore:/opt/payara41/keystore
       - vault:/var/lib/docdoku/vault
       - plugins:/opt/plugins
       - native-libs:/opt/native-libs
@@ -114,7 +115,6 @@ services:
       memlock:
         soft: -1
         hard: -1
-    mem_limit: 1g
 #    ports:
 #      - "19200:9200"
 #      - "19300:9300"
@@ -142,6 +142,7 @@ services:
 volumes:
   docdoku_db:
   autodeploy:
+  keystore:
   vault:
   plugins:
   native-libs:
