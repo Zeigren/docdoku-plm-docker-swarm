@@ -12,6 +12,8 @@ services:
     configs:
       - source: plm_vhost
         target: /etc/nginx/conf.d/default.conf
+      - source: webapp.properties
+        target: /webapp.properties.json
     secrets:
       - source: YOURDOMAIN.com.crt
         target: /etc/nginx/certs/YOURDOMAIN.com.crt
@@ -52,10 +54,10 @@ services:
       - BASIC_AUTH_ENABLED=false
       - DATABASE_USER=docdokuplm
       - DATABASE_PWD=DOCKER-SECRET->docdokuplmsql_password
-      - DATABASE_URL=jdbc:mysql://localhost:3306/docdokuplm?useSSL=false
+      - DATABASE_URL=jdbc:mysql:http//mariadb:3306/docdokuplm?useSSL=false
       - ES_SERVER_PWD=DOCKER-SECRET->ES_SERVER_PWD
       - ES_SERVER_USERNAME=elastic
-      - ES_SERVER_URI=http://localhost:9200
+      - ES_SERVER_URI=http://es:9200
       - ES_SERVER_SHARDS=4
       - ES_SERVER_AUTO_EXPAND_REPLICAS=0-3
       - ES_SERVER_REPLICAS=0
@@ -100,24 +102,24 @@ services:
       - KEYSTORE_PASS
       - KEYSTORE_KEY_PASS
 #    ports:
-#      - "18080:8080"
-#      - "14848:4848"
-#      - "19009:9009"
-#      - "18686:8686"
+#      - "8080"
+#      - "4848"
+#      - "8009"
+#      - "8181"
 
   es:
     image: elasticsearch:6.6.1
     environment:
       - cluster.name=docdokuplm
-      - bootstrap.memory_lock=true
+      - bootstrap.memory_lock=false
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
 #    ports:
-#      - "19200:9200"
-#      - "19300:9300"
+#      - "9200"
+#      - "9300"
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
     networks:
@@ -138,6 +140,7 @@ services:
     deploy:
       restart_policy:
         condition: none
+#    command: "init && build && deploy"
 
 volumes:
   docdoku_db:
@@ -182,4 +185,6 @@ networks:
 
 configs:
   plm_vhost:
+    external: true
+  webapp.properties:
     external: true

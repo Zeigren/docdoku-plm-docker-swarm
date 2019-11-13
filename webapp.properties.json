@@ -1,0 +1,11 @@
+{
+    "server": {
+        "ssl": true,
+        "domain": "https://plm.YOURDOMAIN.com",
+        "port": 443,
+        "contextPath": "/eplmp-server-rest",
+        "wsDomain": "https://plm.YOURDOMAIN.com"
+    },
+    "contextPath": "/",
+    "preferLoginWith": false,
+}
