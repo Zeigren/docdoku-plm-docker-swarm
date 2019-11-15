@@ -68,7 +68,7 @@ EOF
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-custom-resource --restype java.util.Properties --factoryclass org.glassfish.resources.custom.factory.PropertiesFactory --property="" elasticsearch.config
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-custom-resource --restype java.util.Properties --factoryclass org.glassfish.resources.custom.factory.PropertiesFactory --property="" office.config
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-jdbc-connection-pool --restype javax.sql.ConnectionPoolDataSource --datasourceclassname com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource --property="" DocDokuPLMPool
- ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-jdbc-resource --connectionpoolid DocDokuPLMPool jdbc/docdokuPU
+ ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-jdbc-resource --connectionpoolid DocDokuPLMPool jdbc/docdokuplm
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-jvm-options -Dfile.encoding=UTF-8
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile delete-jvm-options '-Xmx512m'
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-jvm-options -Xmx${HEAP_SIZE}
