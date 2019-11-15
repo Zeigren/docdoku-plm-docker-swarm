@@ -11,7 +11,7 @@ JWT_ENABLED=${JWT_ENABLED:-true}
 JWT_KEY=${JWT_KEY:-MyVerySecretPhrase}
 SESSION_ENABLED=${SESSION_ENABLED:-false}
 BASIC_AUTH_ENABLED=${BASIC_AUTH_ENABLED:-false}
-DATABASE_USER=${DATABASE_USER:-docdokuplm_user}
+DATABASE_USER=${DATABASE_USER:-docdokuplm}
 DATABASE_PWD=${DATABASE_PWD:-changeit}
 DATABASE_URL=${DATABASE_URL:-jdbc:mysql://localhost:3306/docdokuplm}
 ES_SERVER_URI=${ES_SERVER_URI:-http://localhost:9200}
@@ -42,6 +42,9 @@ ASADMIN_PATH=${ASADMIN_PATH:-/opt/payara41/bin}
 DOMAIN_DIR=${DOMAIN_DIR:-/opt/payara41/glassfish/domains/domain1}
 VAULT_PATH=${VAULT_PATH:-/var/lib/docdoku/vault}
 NATIVE_LIBS=${NATIVE_LIBS:-/opt/native-libs}
+UPDATE=${UPDATE:-false}
+
+if [[ ${UPDATE} = true ]]; then
 
 if [[ ! -f ${KEYSTORE_LOCATION} ]]; then
 	keytool -genseckey -storetype JCEKS -keyalg AES -keysize 256 -keystore ${KEYSTORE_LOCATION} -storepass ${KEYSTORE_PASS} -keypass ${KEYSTORE_KEY_PASS}
@@ -105,5 +108,6 @@ EOF
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile stop-domain
  rm /opt/pwdfile
  rm /opt/tmpfile
+fi
 
 exec "$@"

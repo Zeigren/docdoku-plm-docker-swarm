@@ -22,8 +22,8 @@ services:
       - source: dhparam.pem
         target: /etc/nginx/dhparam/dhparam.pem
 
-  mariadb:
-    image: mariadb:10
+  mysql:
+    image: mysql:8.0.18
     volumes:
       - docdoku_db:/var/lib/mysql
     environment:
@@ -54,7 +54,7 @@ services:
       - BASIC_AUTH_ENABLED=false
       - DATABASE_USER=docdokuplm
       - DATABASE_PWD=DOCKER-SECRET->docdokuplmsql_password
-      - DATABASE_URL=jdbc:mysql:http//mariadb:3306/docdokuplm?useSSL=false
+      - DATABASE_URL=jdbc:mysql:http//mysql:3306/docdokuplm?useSSL=false&allowPublicKeyRetrieval=true
       - ES_SERVER_PWD=DOCKER-SECRET->ES_SERVER_PWD
       - ES_SERVER_USERNAME=elastic
       - ES_SERVER_URI=http://es:9200
