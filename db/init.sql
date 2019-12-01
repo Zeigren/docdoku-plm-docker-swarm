@@ -1,1 +1,1 @@
-GRANT ALL PRIVILEGES ON plm.zeigren.* to docdokuplm_user@'%' IDENTIFIED BY 'changeit';
+GRANT ALL PRIVILEGES ON docdokuplm.* to docdokuplm_user@'%' IDENTIFIED BY 'changeit';
