@@ -47,11 +47,11 @@ ARG SMTP_PORT=25
 ARG SMTP_USER=myuser
 ARG SMTP_FROM_ADDR=docdokuplm@plm.zeigren.com
 
-ENV KEYSTORE_LOCATION /opt/payara41/dplm.jceks
+ENV KEYSTORE_LOCATION /opt/payara41/dplm.pkcs12
 ENV KEYSTORE_KEY_ALIAS mykey
 ENV KEYSTORE_PASS changeit
 ENV KEYSTORE_KEY_PASS changeit
-ENV KEYSTORE_TYPE JCEKS
+ENV KEYSTORE_TYPE PKCS12
 
 ENV SOLIDWORKS_LICENSE_PATH /opt/plugins/solidworks/license.txt
 ENV SOLIDWORKS_SCHEMA_PATH /opt/plugins/solidworks/schema
@@ -64,7 +64,7 @@ ENV VAULT_PATH /var/lib/docdoku/vault
 ENV NATIVE_LIBS /opt/native-libs
 
 RUN \
- keytool -genseckey -storetype JCEKS -keyalg AES -keysize 256 -keystore ${KEYSTORE_LOCATION} -storepass ${KEYSTORE_PASS} -keypass ${KEYSTORE_KEY_PASS}
+ keytool -genseckey -storetype PKCS12 -keyalg AES -keysize 256 -keystore ${KEYSTORE_LOCATION} -storepass ${KEYSTORE_PASS} -keypass ${KEYSTORE_KEY_PASS}
 
 RUN echo 'AS_ADMIN_PASSWORD=\n\
 AS_ADMIN_NEWPASSWORD='${AS_ADMIN_PASSWORD}'\n\
