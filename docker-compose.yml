@@ -50,7 +50,7 @@ services:
     build:
       context: ./back
       args:
-        - DOCDOKU_PLM_CODEBASE=https://plm.zeigren.com
+        - DOCDOKU_PLM_CODEBASE=https://plm.zeigren.com:443
         - HEAP_SIZE=1g
         - AS_ADMIN_PASSWORD=changeit
         - JWT_ENABLED=true
@@ -85,7 +85,7 @@ services:
       - es
       - back
     ports:
-      - "18080:8080"
+      - "8080:8080"
       - "14848:4848"
       - "19009:9009"
       - "18686:8686"
