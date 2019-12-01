@@ -25,6 +25,7 @@ ENV IFCCONVERT_URL https://github.com/IfcOpenShell/IfcOpenShell/releases/downloa
 ENV DECIMATER_URL https://github.com/docdoku/docdoku-plm-openmesh-decimater/raw/master/builds/decimater-linux-64.zip
 ENV MESHCONV_URL http://www.patrickmin.com/meshconv/linux64/meshconv
 ENV MYSQL_CONNECTOR_URL https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.48.zip
+ENV MYSQL_CONNECTOR_VERSION 5.1.48
 
 USER root
 
@@ -32,12 +33,12 @@ RUN \
  apt-get update && apt-get install -y \
  freecad  \
  assimp-utils \
- libreoffice  \
- libreoffice-writer  \
- ure  \
- libreoffice-java-common  \
- libreoffice-core \
- libreoffice-common \
+ #libreoffice  \
+ #libreoffice-writer  \
+ ure \
+ #libreoffice-java-common  \
+ #libreoffice-core \
+ #libreoffice-common \
  fonts-opensymbol \
  hyphen-fr \
  hyphen-de \
@@ -76,12 +77,12 @@ RUN \
 
 
 RUN \
- wget --quiet -O /opt/mysql-connector-java-5.1.48.zip ${MYSQL_CONNECTOR_URL} && \
- unzip -qq /opt/mysql-connector-java-5.1.48.zip -d /opt/ && \
+ wget --quiet -O /opt/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}.zip ${MYSQL_CONNECTOR_URL} && \
+ unzip -qq /opt/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}.zip -d /opt/ && \
  mkdir -p /opt/payara41/glassfish/domains/domain1/lib/ && \
- mv /opt/mysql-connector-java-5.1.48/mysql-connector-java-5.1.48-bin.jar ${PAYARA_PATH}/glassfish/domains/domain1/lib/mysql-connector-java-5.1.48-bin.jar && \
- rm /opt/mysql-connector-java-5.1.48.zip && \
- rm -rf /opt/mysql-connector-java-5.1.48
+ mv /opt/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}-bin.jar /opt/payara41/glassfish/domains/domain1/lib/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}-bin.jar && \
+ rm /opt/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}.zip && \
+ rm -rf /opt/mysql-connector-java-${MYSQL_CONNECTOR_VERSION}
 
 RUN \
  chown -R payara:payara /opt

@@ -36,7 +36,7 @@ FROM ubuntu:16.04
 
 RUN \
     apt-get update && \
-    apt-get install -y openjdk-8-jdk maven build-essential curl git wget && \
+    apt-get install -y openjdk-8-jdk maven build-essential curl git wget unzip && \
     curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     apt-get install -y nodejs && \
     npm install npm@6.1.0 -g && \

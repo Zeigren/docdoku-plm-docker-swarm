@@ -33,7 +33,7 @@ ARG DATABASE_USER=docdokuplm_user
 ARG DATABASE_PWD=changeit
 ARG DATABASE_URL=jdbc:mysql://plm.zeigren.com:3306/docdokuplm
 ARG ES_SERVER_URI=http://plm.zeigren.com:9200
-ARG ES_SERVER_SHARDS=4
+ARG ES_SERVER_SHARDS=1
 ARG ES_SERVER_AUTO_EXPAND_REPLICAS=0-3
 ARG ES_SERVER_REPLICAS=0
 ARG ES_SERVER_PWD=changeme
@@ -56,10 +56,10 @@ ENV KEYSTORE_TYPE JCEKS
 ENV SOLIDWORKS_LICENSE_PATH /opt/plugins/solidworks/license.txt
 ENV SOLIDWORKS_SCHEMA_PATH /opt/plugins/solidworks/schema
 ENV CATIA_LICENSE_PATH /opt/plugins/catia/license.txt
-ENV OFFICE_PORT 8100
-ENV OFFICE_HOME /usr/lib/libreoffice
-ENV ASADMIN_PATH ${PAYARA_PATH}/bin
-ENV DOMAIN_DIR ${PAYARA_PATH}/glassfish/domains/domain1
+#ENV OFFICE_PORT 8100
+#ENV OFFICE_HOME /usr/lib/libreoffice
+ENV ASADMIN_PATH /opt/payara41/bin
+ENV DOMAIN_DIR /opt/payara41/glassfish/domains/domain1
 ENV VAULT_PATH /var/lib/docdoku/vault
 ENV NATIVE_LIBS /opt/native-libs
 
@@ -126,5 +126,4 @@ RUN \
  rm /opt/pwdfile && \
  rm /opt/tmpfile
 
-ENTRYPOINT ${ASADMIN_PATH}/asadmin start-domain --debug true -v domain1
-
+ENTRYPOINT ${ASADMIN_PATH}/asadmin start-domain -v domain1

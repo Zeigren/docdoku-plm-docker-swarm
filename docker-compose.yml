@@ -42,7 +42,7 @@ services:
     depends_on:
       - db
       - es
-      - smtp
+      #- smtp
     build:
       context: ./back
       args:
@@ -57,7 +57,7 @@ services:
         - DATABASE_PWD=changeit
         - DATABASE_URL=jdbc:mysql://db:3306/docdokuplm?useSSL=false
         - ES_SERVER_URI=http://es:9200
-        - ES_SERVER_SHARDS=4
+        - ES_SERVER_SHARDS=1
         - ES_SERVER_AUTO_EXPAND_REPLICAS=0-3
         - ES_SERVER_REPLICAS=0
         - ES_SERVER_USERNAME=elastic
@@ -85,7 +85,7 @@ services:
     links:
       - "db:db"
       - "es:es"
-      - "smtp:smtp"
+      #- "smtp:smtp"
 
   # Nginx global proxy
   # The application will run at http://localhost:10080, change if needed
@@ -96,8 +96,8 @@ services:
       - back
       - es
       - kibana
-      - smtp
-      - adminer
+      #- smtp
+      #- adminer
     build:
       context: ./proxy
       args:
@@ -117,8 +117,8 @@ services:
       - "back:back"
       - "es:es"
       - "kibana:kibana"
-      - "smtp:smtp"
-      - "adminer:adminer"
+      #- "smtp:smtp"
+      #- "adminer:adminer"
 
   # ElasticSearch instance
   es:
@@ -186,29 +186,28 @@ services:
       - "back:back"
 
   # View emails sent by the platform in browser
-  smtp:
-    container_name: docdoku-plm-docker_smtp
-    image: mailhog/mailhog
-    networks:
-      - network
-    ports: 
-      - "1025:1025"
-      - "8025:8025"
+#  smtp:
+#    container_name: docdoku-plm-docker_smtp
+#    image: mailhog/mailhog
+#    networks:
+#      - network
+#    ports: 
+#      - "1025:1025"
+#      - "8025:8025"
 
   # SQL Management
-  adminer:
-    container_name: docdoku-plm-docker_adminer
-    image: adminer:4.7.1-standalone
-    networks:
-      - network
-    ports:
-      - "8282:8080"
-    depends_on: 
-      - db
-    links:
-      - db:db
+#  adminer:
+#    container_name: docdoku-plm-docker_adminer
+#   image: adminer:4.7.1-standalone
+#   networks:
+#     - network
+#   ports:
+#     - "8282:8080"
+#   depends_on: 
+#     - db
+#   links:
+#     - db:db
 
 networks:
   network:
     driver: bridge
-
