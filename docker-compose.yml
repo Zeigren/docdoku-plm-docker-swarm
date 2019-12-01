@@ -18,7 +18,7 @@
 #
 # DocDokuPLM platform docker file
 
-version: '2'
+version: '3.7'
 
 services:
 
@@ -29,7 +29,7 @@ services:
     build:
       context: ./front
     networks:
-      - network
+      - front
     ports:
       - "13000:3000"
     volumes:
@@ -76,16 +76,15 @@ services:
       - "./volumes/plugins:/opt/plugins"
       - "./volumes/native-libs:/opt/native-libs"
     networks:
-      - network
+      - front
+      - db
+      - es
+      - back
     ports:
       - "18080:8080"
       - "14848:4848"
       - "19009:9009"
       - "18686:8686"
-    links:
-      - "db:db"
-      - "es:es"
-      #- "smtp:smtp"
 
   # Nginx global proxy
   # The application will run at http://localhost:10080, change if needed
@@ -104,7 +103,12 @@ services:
         - "DOMAIN=plm.zeigren.com"
         - "EMAIL=admin@plm.zeigren.com"
     networks:
-      - network
+      - front
+      - db
+      - es
+      - back
+      - kibana
+      - proxy
     ports:
       - "10080:10080"
       - "10081:10081"
@@ -112,13 +116,6 @@ services:
       - "10083:10083"
       - "10084:10084"
       - "10085:10085"
-    links:
-      - "front:front"
-      - "back:back"
-      - "es:es"
-      - "kibana:kibana"
-      #- "smtp:smtp"
-      #- "adminer:adminer"
 
   # ElasticSearch instance
   es:
@@ -134,7 +131,7 @@ services:
         hard: -1
     mem_limit: 1g
     networks:
-      - network
+      - es
     ports:
       - "19200:9200"
       - "19300:9300"
@@ -149,13 +146,12 @@ services:
        - SERVER_NAME=kibana
        - ELASTICSEARCH_URL=http://es:9200
      networks:
-       - network
+       - es
+       - kibana
      depends_on:
        - es
      ports:
        - "5601:5601"
-     links:
-       - "es:es"
 
   # MySQL instance
   db:
@@ -164,7 +160,7 @@ services:
     volumes:
       - "./volumes/db:/var/lib/mysql"
     networks:
-      - network
+      - db
     ports:
       - "13306:3306"
 
@@ -180,10 +176,8 @@ services:
       - ./volumes/m2:/root/.m2
       - ./volumes/npm:/root/.npm
     networks:
-      - network
-    links:
-      - "proxy:plm.zeigren.com"
-      - "back:back"
+      - proxy
+      - back
 
   # View emails sent by the platform in browser
 #  smtp:
@@ -209,5 +203,9 @@ services:
 #     - db:db
 
 networks:
-  network:
-    driver: bridge
+  front:
+  back:
+  es:
+  db:
+  proxy:
+  kibana:
