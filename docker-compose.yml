@@ -28,10 +28,14 @@ services:
     container_name: docdoku-plm-docker_front
     build:
       context: ./front
+      args:
+        - "DOMAIN=plm.zeigren.com"
+        - "EMAIL=admin@plm.zeigren.com"
     networks:
       - front
     ports:
-      - "13000:3000"
+      - "443:443"
+      - "80:80"
     volumes:
       - ./volumes/web-front:/usr/share/nginx/dist
       - ./volumes/src/docdoku-web-front/app:/usr/share/nginx/app
@@ -46,7 +50,7 @@ services:
     build:
       context: ./back
       args:
-        - DOCDOKU_PLM_CODEBASE=https://plm.zeigren.com:10080
+        - DOCDOKU_PLM_CODEBASE=https://plm.zeigren.com
         - HEAP_SIZE=1g
         - AS_ADMIN_PASSWORD=changeit
         - JWT_ENABLED=true
@@ -88,34 +92,34 @@ services:
 
   # Nginx global proxy
   # The application will run at http://localhost:10080, change if needed
-  proxy:
-    container_name: docdoku-plm-docker_proxy
-    depends_on:
-      - front
-      - back
-      - es
-      - kibana
-      #- smtp
-      #- adminer
-    build:
-      context: ./proxy
-      args:
-        - "DOMAIN=plm.zeigren.com"
-        - "EMAIL=admin@plm.zeigren.com"
-    networks:
-      - front
-      - db
-      - es
-      - back
-      - kibana
-      - proxy
-    ports:
-      - "10080:10080"
-      - "10081:10081"
-      - "10082:10082"
-      - "10083:10083"
-      - "10084:10084"
-      - "10085:10085"
+#  proxy:
+#    container_name: docdoku-plm-docker_proxy
+#    depends_on:
+#      - front
+#      - back
+#      - es
+#      - kibana
+#      #- smtp
+#      #- adminer
+#    build:
+#      context: ./proxy
+#      args:
+#        - "DOMAIN=plm.zeigren.com"
+#        - "EMAIL=admin@plm.zeigren.com"
+#    networks:
+#      - front
+#      - db
+#      - es
+#      - back
+#      - kibana
+#      - proxy
+#    ports:
+#      - "10080:10080"
+#      - "10081:10081"
+#     - "10082:10082"
+#      - "10083:10083"
+#      - "10084:10084"
+#      - "10085:10085"
 
   # ElasticSearch instance
   es:
@@ -169,13 +173,13 @@ services:
     build: ./build-env
     depends_on: 
       - back
-      - proxy
+      - front
     volumes:
       - ./volumes/src:/src
       - ./volumes/m2:/root/.m2
       - ./volumes/npm:/root/.npm
     networks:
-      - proxy
+      - front
       - back
 
   # View emails sent by the platform in browser
@@ -206,5 +210,4 @@ networks:
   back:
   es:
   db:
-  proxy:
   kibana:
