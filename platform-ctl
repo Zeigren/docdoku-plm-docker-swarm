@@ -82,12 +82,12 @@ init-repo () {
         git clone --single-branch -b ${DOCDOKU_PLM_VERSION} --depth 1 "${EPLMP_SSH_URL}" "${SOURCES_DIR}/eplmp"
         git clone --single-branch -b ${DOCDOKU_PLM_VERSION} --depth 1 "${DOCDOKU_PLM_SSH_URL}" "${SOURCES_DIR}/docdoku-plm"
         git clone --single-branch -b ${DOCDOKU_PLM_VERSION} --depth 1 "${DOCDOKU_WEB_FRONT_SSH_URL}" "${SOURCES_DIR}/docdoku-web-front"
-        git clone --single-branch -b ${DOCDOKU_PLM_VERSION} --depth 1 "${DOCDOKU_PLM_SAMPLE_SSH_URL}" "${SOURCES_DIR}/docdoku-plm-sample-data"
+        git clone --single-branch -b 2.5.5 --depth 1 "${DOCDOKU_PLM_SAMPLE_SSH_URL}" "${SOURCES_DIR}/docdoku-plm-sample-data"
     else
         git clone --single-branch -b ${DOCDOKU_PLM_VERSION} --depth 1 "${EPLMP_HTTPS_URL}" "${SOURCES_DIR}/eplmp"
         git clone --single-branch -b ${DOCDOKU_PLM_VERSION} --depth 1 "${DOCDOKU_PLM_HTTPS_URL}" "${SOURCES_DIR}/docdoku-plm"
         git clone --single-branch -b ${DOCDOKU_PLM_VERSION} --depth 1 "${DOCDOKU_WEB_FRONT_HTTPS_URL}" "${SOURCES_DIR}/docdoku-web-front"
-        git clone --single-branch -b ${DOCDOKU_PLM_VERSION} --depth 1 "${DOCDOKU_PLM_SAMPLE_HTTPS_URL}" "${SOURCES_DIR}/docdoku-plm-sample-data"
+        git clone --single-branch -b 2.5.5 --depth 1 "${DOCDOKU_PLM_SAMPLE_HTTPS_URL}" "${SOURCES_DIR}/docdoku-plm-sample-data"
     fi
 }
 
