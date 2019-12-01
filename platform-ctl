@@ -31,6 +31,7 @@ DOCDOKU_WEB_FRONT_HTTPS_URL=https://github.com/docdoku/docdoku-web-front.git
 DOCDOKU_PLM_SAMPLE_SSH_URL=git@github.com:docdoku/docdoku-plm-sample-data.git
 DOCDOKU_PLM_SAMPLE_HTTPS_URL=https://github.com/docdoku/docdoku-plm-sample-data.git
 DOCDOKU_PLM_VERSION=2.5.6
+DOCDOKU_SAMPLE_VERSION=2.5.5
 
 # Resolve script dir (may be a symlink or sourced script)
 dir () {
@@ -82,12 +83,12 @@ init-repo () {
         git clone --single-branch -b ${DOCDOKU_PLM_VERSION} --depth 1 "${EPLMP_SSH_URL}" "${SOURCES_DIR}/eplmp"
         git clone --single-branch -b ${DOCDOKU_PLM_VERSION} --depth 1 "${DOCDOKU_PLM_SSH_URL}" "${SOURCES_DIR}/docdoku-plm"
         git clone --single-branch -b ${DOCDOKU_PLM_VERSION} --depth 1 "${DOCDOKU_WEB_FRONT_SSH_URL}" "${SOURCES_DIR}/docdoku-web-front"
-        git clone --single-branch -b 2.5.5 --depth 1 "${DOCDOKU_PLM_SAMPLE_SSH_URL}" "${SOURCES_DIR}/docdoku-plm-sample-data"
+        git clone --single-branch -b ${DOCDOKU_SAMPLE_VERSION} --depth 1 "${DOCDOKU_PLM_SAMPLE_SSH_URL}" "${SOURCES_DIR}/docdoku-plm-sample-data"
     else
         git clone --single-branch -b ${DOCDOKU_PLM_VERSION} --depth 1 "${EPLMP_HTTPS_URL}" "${SOURCES_DIR}/eplmp"
         git clone --single-branch -b ${DOCDOKU_PLM_VERSION} --depth 1 "${DOCDOKU_PLM_HTTPS_URL}" "${SOURCES_DIR}/docdoku-plm"
         git clone --single-branch -b ${DOCDOKU_PLM_VERSION} --depth 1 "${DOCDOKU_WEB_FRONT_HTTPS_URL}" "${SOURCES_DIR}/docdoku-web-front"
-        git clone --single-branch -b 2.5.5 --depth 1 "${DOCDOKU_PLM_SAMPLE_HTTPS_URL}" "${SOURCES_DIR}/docdoku-plm-sample-data"
+        git clone --single-branch -b ${DOCDOKU_SAMPLE_VERSION} --depth 1 "${DOCDOKU_PLM_SAMPLE_HTTPS_URL}" "${SOURCES_DIR}/docdoku-plm-sample-data"
     fi
 }
 
@@ -341,7 +342,7 @@ insert-sample () {
   docker-compose run build-env bash -c "\
    cd /src/docdoku-plm-sample-data && \
    mvn clean install dependency:copy-dependencies && \
-   java -classpath target/docdoku-plm-sample-data.jar:target/dependency/docdoku-api-java-2.5.5.jar:target/dependency/* com.docdoku.loaders.Main -h http://back:8080/eplmp-server-rest -u "$1" -p "$2" \
+   java -classpath target/docdoku-plm-sample-data.jar:target/dependency/docdoku-api-java-${DOCDOKU_SAMPLE_VERSION}.jar:target/dependency/* com.docdoku.loaders.Main -h http://back:8080/eplmp-server-rest -u "$1" -p "$2" \
   "
 }
 
