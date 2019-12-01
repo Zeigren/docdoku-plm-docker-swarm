@@ -18,7 +18,7 @@
 
 # DocDokuPLM MySQL build
 
-FROM mysql:5.7.15
+FROM mysql:5.7
 
 ENV MYSQL_DATABASE=docdokuplm \
     MYSQL_ROOT_PASSWORD=changeit

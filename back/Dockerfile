@@ -22,7 +22,7 @@
 FROM docdokuplm:payara
 
 
-ARG DOCDOKU_PLM_CODEBASE=http://localhost
+ARG DOCDOKU_PLM_CODEBASE=http://plm.zeigren.com
 ARG HEAP_SIZE=2g
 ARG AS_ADMIN_PASSWORD=changeit
 ARG JWT_ENABLED=true
@@ -31,8 +31,8 @@ ARG SESSION_ENABLED=false
 ARG BASIC_AUTH_ENABLED=false
 ARG DATABASE_USER=docdokuplm_user
 ARG DATABASE_PWD=changeit
-ARG DATABASE_URL=jdbc:mysql://localhost:3306/docdokuplm
-ARG ES_SERVER_URI=http://localhost:9200
+ARG DATABASE_URL=jdbc:mysql://plm.zeigren.com:3306/docdokuplm
+ARG ES_SERVER_URI=http://plm.zeigren.com:9200
 ARG ES_SERVER_SHARDS=4
 ARG ES_SERVER_AUTO_EXPAND_REPLICAS=0-3
 ARG ES_SERVER_REPLICAS=0
@@ -42,10 +42,10 @@ ARG ES_SERVER_AWS_SERVICE
 ARG ES_SERVER_AWS_REGION
 ARG ES_SERVER_AWS_KEY
 ARG ES_SERVER_AWS_SECRET
-ARG SMTP_HOST=localhost
+ARG SMTP_HOST=plm.zeigren.com
 ARG SMTP_PORT=25
 ARG SMTP_USER=myuser
-ARG SMTP_FROM_ADDR=docdokuplm@localhost
+ARG SMTP_FROM_ADDR=docdokuplm@plm.zeigren.com
 
 ENV KEYSTORE_LOCATION /opt/payara41/dplm.jceks
 ENV KEYSTORE_KEY_ALIAS mykey

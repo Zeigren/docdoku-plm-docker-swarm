@@ -18,7 +18,7 @@
 
 FROM nginx:alpine
 
-ENV NGINX_HOST localhost
+ENV NGINX_HOST plm.zeigren.com
 ENV NGINX_PORT 3000
 
 COPY default.conf /etc/nginx/conf.d/default.conf

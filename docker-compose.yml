@@ -46,7 +46,7 @@ services:
     build:
       context: ./back
       args:
-        - DOCDOKU_PLM_CODEBASE=https://docdokuplm.local:10080
+        - DOCDOKU_PLM_CODEBASE=https://plm.zeigren.com:10080
         - HEAP_SIZE=1g
         - AS_ADMIN_PASSWORD=changeit
         - JWT_ENABLED=true
@@ -65,7 +65,7 @@ services:
         - SMTP_HOST=smtp
         - SMTP_PORT=1025
         - SMTP_USER=user
-        - SMTP_FROM_ADDR=notifications@docdokuplm.local
+        - SMTP_FROM_ADDR=notifications@plm.zeigren.com
         #- ES_SERVER_AWS_SERVICE=
         #- ES_SERVER_AWS_REGION=
         #- ES_SERVER_AWS_KEY=
@@ -101,8 +101,8 @@ services:
     build:
       context: ./proxy
       args:
-        - "DOMAIN=docdokuplm.local"
-        - "EMAIL=admin@docdokuplm.local"
+        - "DOMAIN=plm.zeigren.com"
+        - "EMAIL=admin@plm.zeigren.com"
     networks:
       - network
     ports:
@@ -182,7 +182,7 @@ services:
     networks:
       - network
     links:
-      - "proxy:docdokuplm.local"
+      - "proxy:plm.zeigren.com"
       - "back:back"
 
   # View emails sent by the platform in browser

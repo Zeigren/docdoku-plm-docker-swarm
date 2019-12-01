@@ -1,10 +1,10 @@
 {
     "server": {
         "ssl": true,
-        "domain": "mydomain",
+        "domain": "plm.zeigren.com",
         "port": 10081,
         "contextPath": "/eplmp-server-rest",
-        "wsDomain": "mydomain"
+        "wsDomain": "plm.zeigren.com"
     },
     "contextPath": "/",
     "preferLoginWith": false,
