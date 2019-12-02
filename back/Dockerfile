@@ -31,7 +31,7 @@ ARG SESSION_ENABLED=false
 ARG BASIC_AUTH_ENABLED=false
 ARG DATABASE_USER=docdokuplm_user
 ARG DATABASE_PWD=changeit
-ARG DATABASE_URL=jdbc:mysql://plm.zeigren.com:3306/docdokuplm?useSSL=false&allowPublicKeyRetrieval=true
+ARG DATABASE_URL=jdbc:mysql://db:3306/docdokuplm?useSSL=false&allowPublicKeyRetrieval=true&serverTimeZone=UTC
 ARG ES_SERVER_URI=http://plm.zeigren.com:9200
 ARG ES_SERVER_SHARDS=1
 ARG ES_SERVER_AUTO_EXPAND_REPLICAS=0-3
@@ -84,7 +84,7 @@ RUN \
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-custom-resource --restype java.util.Properties --factoryclass org.glassfish.resources.custom.factory.PropertiesFactory --property="" security.config && \
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-custom-resource --restype java.util.Properties --factoryclass org.glassfish.resources.custom.factory.PropertiesFactory --property="" elasticsearch.config && \
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-custom-resource --restype java.util.Properties --factoryclass org.glassfish.resources.custom.factory.PropertiesFactory --property="" office.config && \
- ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-jdbc-connection-pool --restype javax.sql.ConnectionPoolDataSource --datasourceclassname com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource --property="" DocDokuPLMPool && \
+ ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-jdbc-connection-pool --restype javax.sql.ConnectionPoolDataSource --datasourceclassname com.mysql.cj.jdbc.MysqlConnectionPoolDataSource --property="" DocDokuPLMPool && \
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-jdbc-resource --connectionpoolid DocDokuPLMPool jdbc/docdokuPU && \
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-jvm-options -Dfile.encoding=UTF-8 && \
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile delete-jvm-options '-Xmx512m' && \
