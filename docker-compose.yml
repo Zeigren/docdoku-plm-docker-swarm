@@ -165,6 +165,7 @@ services:
     networks:
       - db
     environment:
+      - MYSQL_ROOT_PASSWORD=changeit
       - MYSQL_USER=docdokuplm_user
       - MYSQL_PASSWORD=changeit
       - MYSQL_DATABASE=docdokuplm
