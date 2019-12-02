@@ -39,6 +39,8 @@ services:
     volumes:
       - ./volumes/web-front:/usr/share/nginx/dist
       - ./volumes/src/docdoku-web-front/app:/usr/share/nginx/app
+    depends_on:
+      - back
 
   # Payara instance - JEE application server
   back:
@@ -83,7 +85,6 @@ services:
       - front
       - db
       - es
-      - back
     ports:
       - "8080:8080"
       - "14848:4848"
@@ -150,7 +151,6 @@ services:
        - ELASTICSEARCH_URL=http://es:9200
      networks:
        - es
-       - kibana
      depends_on:
        - es
      ports:
@@ -180,7 +180,6 @@ services:
       - ./volumes/npm:/root/.npm
     networks:
       - front
-      - back
 
   # View emails sent by the platform in browser
 #  smtp:
@@ -207,7 +206,5 @@ services:
 
 networks:
   front:
-  back:
   es:
   db:
-  kibana:
