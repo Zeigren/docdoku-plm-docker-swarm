@@ -31,7 +31,7 @@ ARG SESSION_ENABLED=false
 ARG BASIC_AUTH_ENABLED=false
 ARG DATABASE_USER=docdokuplm_user
 ARG DATABASE_PWD=changeit
-ARG DATABASE_URL=jdbc:mysql://plm.zeigren.com:3306/docdokuplm
+ARG DATABASE_URL=jdbc:mysql://plm.zeigren.com:3306/docdokuplm?useSSL=false&allowPublicKeyRetrieval=true
 ARG ES_SERVER_URI=http://plm.zeigren.com:9200
 ARG ES_SERVER_SHARDS=1
 ARG ES_SERVER_AUTO_EXPAND_REPLICAS=0-3

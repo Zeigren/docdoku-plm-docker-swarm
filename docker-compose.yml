@@ -61,7 +61,7 @@ services:
         - BASIC_AUTH_ENABLED=false
         - DATABASE_USER=docdokuplm_user
         - DATABASE_PWD=changeit
-        - DATABASE_URL=jdbc:mysql://db:3306/docdokuplm?useSSL=false
+        - DATABASE_URL=jdbc:mysql://db:3306/docdokuplm?useSSL=false&allowPublicKeyRetrieval=true
         - ES_SERVER_URI=http://es:9200
         - ES_SERVER_SHARDS=1
         - ES_SERVER_AUTO_EXPAND_REPLICAS=0-3
@@ -143,29 +143,31 @@ services:
       - ./volumes/elasticsearch-data:/usr/share/elasticsearch/data
 
   # Kibana instance
-  kibana:
-     container_name: docdoku-plm-docker_kibana
-     image: docker.elastic.co/kibana/kibana:6.6.1
-     environment:
-       - SERVER_NAME=kibana
-       - ELASTICSEARCH_URL=http://es:9200
-     networks:
-       - es
-     depends_on:
-       - es
-     ports:
-       - "5601:5601"
+#  kibana:
+#     container_name: docdoku-plm-docker_kibana
+#     image: docker.elastic.co/kibana/kibana:6.6.1
+#     environment:
+#       - SERVER_NAME=kibana
+#       - ELASTICSEARCH_URL=http://es:9200
+#     networks:
+#       - es
+#     depends_on:
+#       - es
+#     ports:
+#       - "5601:5601"
 
   # MySQL instance
   db:
     container_name: docdoku-plm-docker_db
-    build: ./db
-    volumes:
+    image: mysql:8
+    volumes: 
       - "./volumes/db:/var/lib/mysql"
     networks:
       - db
-    ports:
-      - "13306:3306"
+    environment:
+      - MYSQL_USER=docdokuplm_user
+      - MYSQL_PASSWORD=changeit
+      - MYSQL_DATABASE=docdokuplm
 
   # DocDokuPLM build env
   build-env:
