@@ -28,9 +28,9 @@ RUN mkdir /etc/nginx/ssl
 COPY default.conf /etc/nginx/conf.d/default.conf
 COPY v3.ext /etc/nginx/ssl/v3.ext
 COPY key.conf /etc/nginx/ssl/key.conf
-COPY webapp.properties.json /usr/share/nginx/dist/webapp.properties.json
+COPY webapp.properties.json /usr/share/nginx/webapp/webapp.properties.json
 
-RUN sed -i -e 's/mydomain/'${DOMAIN}'/g' /usr/share/nginx/dist/webapp.properties.json
+RUN sed -i -e 's/mydomain/'${DOMAIN}'/g' /usr/share/nginx/webapp/webapp.properties.json
 RUN sed -i -e 's/mydomain/'${DOMAIN}'/g' /etc/nginx/conf.d/default.conf
 RUN sed -i -e 's/mydomain/'${DOMAIN}'/g' /etc/nginx/ssl/v3.ext
 RUN sed -i -e 's/mydomain/'${DOMAIN}'/g' /etc/nginx/ssl/key.conf
