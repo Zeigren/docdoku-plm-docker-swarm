@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-  nginx:
+  front:
     image: nginx:alpine
     volumes:
       - web-front:/usr/share/nginx/dist
@@ -13,7 +13,7 @@ services:
       - source: plm_vhost
         target: /etc/nginx/conf.d/default.conf
       - source: webapp.properties
-        target: /webapp.properties.json
+        target: /usr/share/nginx/webapp/webapp.properties.json
     secrets:
       - source: YOURDOMAIN.com.crt
         target: /etc/nginx/certs/YOURDOMAIN.com.crt
@@ -22,40 +22,38 @@ services:
       - source: dhparam.pem
         target: /etc/nginx/dhparam/dhparam.pem
 
-  mysql:
-    image: mysql:8.0.18
+  db:
+    image: mysql:5.7
     volumes:
       - docdoku_db:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/docdokuplmsql_root_password
       - MYSQL_DATABASE=docdokuplm
-      - MYSQL_USER=docdokuplm
+      - MYSQL_USER=docdokuplm_user
       - MYSQL_PASSWORD_FILE=/run/secrets/docdokuplmsql_password
     secrets:
       - docdokuplmsql_root_password
       - docdokuplmsql_password
     networks:
       - db
-#    ports:
-#      - "13306:3306"
 
-  docdokuplm:
+  back:
     image: docdokuplm:latest
     depends_on:
-      - mariadb
+      - db
       - es
     environment:
-      - DOCDOKU_PLM_CODEBASE=https://plm.YOURDOMAIN.com
+      - DOCDOKU_PLM_CODEBASE=https://plm.YOURDOMAIN.com:443
       - HEAP_SIZE=1g
-      - AS_ADMIN_PASSWORD=DOCKER-SECRET->AS_ADMIN_PASSWORD
+      - AS_ADMIN_PASSWORD=changeit
       - JWT_ENABLED=true
-      - JWT_KEY=DOCKER-SECRET->JWT_KEY
+      - JWT_KEY=MyVerySecretPhrase
       - SESSION_ENABLED=false
       - BASIC_AUTH_ENABLED=false
-      - DATABASE_USER=docdokuplm
-      - DATABASE_PWD=DOCKER-SECRET->docdokuplmsql_password
-      - DATABASE_URL=jdbc:mysql:http//mysql:3306/docdokuplm?useSSL=false&allowPublicKeyRetrieval=true
-      - ES_SERVER_PWD=DOCKER-SECRET->ES_SERVER_PWD
+      - DATABASE_USER=docdokuplm_user
+      - DATABASE_PWD=changeit
+      - DATABASE_URL=jdbc:mysql:http//db:3306/docdokuplm?useSSL=false
+      - ES_SERVER_PWD=changeme
       - ES_SERVER_USERNAME=elastic
       - ES_SERVER_URI=http://es:9200
       - ES_SERVER_SHARDS=4
@@ -65,14 +63,14 @@ services:
       #- ES_SERVER_AWS_REGION
       #- ES_SERVER_AWS_KEY
       #- ES_SERVER_AWS_SECRET
-      #- SMTP_HOST=localhost
-      #- SMTP_PORT=25
-      #- SMTP_USER=myuser
-      #- SMTP_FROM_ADDR=notifications@docdokuplm.local
+      - SMTP_HOST=localhost
+      - SMTP_PORT=25
+      - SMTP_USER=myuser
+      - SMTP_FROM_ADDR=notifications@docdokuplm.local
       #- KEYSTORE_LOCATION=/opt/payara41/keystore/dplm.jceks
       - KEYSTORE_KEY_ALIAS=mykey
-      - KEYSTORE_PASS=DOCKER-SECRET->KEYSTORE_PASS
-      - KEYSTORE_KEY_PASS=DOCKER-SECRET->KEYSTORE_KEY_PASS
+      - KEYSTORE_PASS=changeit
+      - KEYSTORE_KEY_PASS=changeit
       #- KEYSTORE_TYPE JCEKS
       #- SOLIDWORKS_LICENSE_PATH /opt/plugins/solidworks/license.txt
       #- SOLIDWORKS_SCHEMA_PATH /opt/plugins/solidworks/schema
@@ -93,19 +91,13 @@ services:
       - front
       - db
       - es
-      - back
-    secrets:
-      - AS_ADMIN_PASSWORD
-      - JWT_KEY
-      - docdokuplmsql_password
-      - ES_SERVER_PWD
-      - KEYSTORE_PASS
-      - KEYSTORE_KEY_PASS
-#    ports:
-#      - "8080"
-#      - "4848"
-#      - "8009"
-#      - "8181"
+#    secrets:
+#      - AS_ADMIN_PASSWORD
+#      - JWT_KEY
+#      - docdokuplmsql_password
+#      - ES_SERVER_PWD
+#      - KEYSTORE_PASS
+#      - KEYSTORE_KEY_PASS
 
   es:
     image: elasticsearch:6.6.1
@@ -117,9 +109,6 @@ services:
       memlock:
         soft: -1
         hard: -1
-#    ports:
-#      - "9200"
-#      - "9300"
     volumes:
       - elasticsearch-data:/usr/share/elasticsearch/data
     networks:
@@ -136,7 +125,7 @@ services:
       - m2:/root/.m2
       - npm:/root/.npm
     networks:
-      - back
+      - front
     deploy:
       restart_policy:
         condition: none
@@ -166,20 +155,19 @@ secrets:
     external: true
   dhparam.pem:
     external: true
-  AS_ADMIN_PASSWORD:
-    external: true
-  JWT_KEY:
-    external: true
-  ES_SERVER_PWD:
-    external: true
-  KEYSTORE_PASS:
-    external: true
-  KEYSTORE_KEY_PASS:
-    external: true
+#  AS_ADMIN_PASSWORD:
+#    external: true
+#  JWT_KEY:
+#    external: true
+#  ES_SERVER_PWD:
+#    external: true
+#  KEYSTORE_PASS:
+#    external: true
+#  KEYSTORE_KEY_PASS:
+#    external: true
 
 networks:
   front:
-  back:
   es:
   db:
 

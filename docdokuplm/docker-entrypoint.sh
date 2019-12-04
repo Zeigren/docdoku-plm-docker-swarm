@@ -11,7 +11,7 @@ JWT_ENABLED=${JWT_ENABLED:-true}
 JWT_KEY=${JWT_KEY:-MyVerySecretPhrase}
 SESSION_ENABLED=${SESSION_ENABLED:-false}
 BASIC_AUTH_ENABLED=${BASIC_AUTH_ENABLED:-false}
-DATABASE_USER=${DATABASE_USER:-docdokuplm}
+DATABASE_USER=${DATABASE_USER:-docdokuplm_user}
 DATABASE_PWD=${DATABASE_PWD:-changeit}
 DATABASE_URL=${DATABASE_URL:-jdbc:mysql://localhost:3306/docdokuplm}
 ES_SERVER_URI=${ES_SERVER_URI:-http://localhost:9200}
@@ -28,11 +28,11 @@ SMTP_HOST=${SMTP_HOST:-}
 SMTP_PORT=${SMTP_PORT:-}
 SMTP_USER=${SMTP_USER:-}
 SMTP_FROM_ADDR=${SMTP_FROM_ADDR:-}
-KEYSTORE_LOCATION=${KEYSTORE_LOCATION:-/opt/payara41/keystore/dplm.jceks}
+KEYSTORE_LOCATION=${KEYSTORE_LOCATION:-/opt/payara41/keystore/dplm.pkcs12}
 KEYSTORE_KEY_ALIAS=${KEYSTORE_KEY_ALIAS:-mykey}
 KEYSTORE_PASS=${KEYSTORE_PASS:-changeit}
 KEYSTORE_KEY_PASS=${KEYSTORE_KEY_PASS:-changeit}
-KEYSTORE_TYPE=${KEYSTORE_TYPE:-JCEKS}
+KEYSTORE_TYPE=${KEYSTORE_TYPE:-PKCS12}
 SOLIDWORKS_LICENSE_PATH=${SOLIDWORKS_LICENSE_PATH:-/opt/plugins/solidworks/license.txt}
 SOLIDWORKS_SCHEMA_PATH=${SOLIDWORKS_SCHEMA_PATH:-/opt/plugins/solidworks/schema}
 CATIA_LICENSE_PATH=${CATIA_LICENSE_PATH:-/opt/plugins/catia/license.txt}
@@ -47,7 +47,7 @@ UPDATE=${UPDATE:-false}
 if [[ ${UPDATE} = true ]]; then
 
 if [[ ! -f ${KEYSTORE_LOCATION} ]]; then
-	keytool -genseckey -storetype JCEKS -keyalg AES -keysize 256 -keystore ${KEYSTORE_LOCATION} -storepass ${KEYSTORE_PASS} -keypass ${KEYSTORE_KEY_PASS}
+	keytool -genseckey -storetype PKCS12 -keyalg AES -keysize 256 -keystore ${KEYSTORE_LOCATION} -storepass ${KEYSTORE_PASS} -keypass ${KEYSTORE_KEY_PASS}
 fi
 
 cat > "/opt/tmpfile" <<EOF
@@ -68,7 +68,7 @@ EOF
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-custom-resource --restype java.util.Properties --factoryclass org.glassfish.resources.custom.factory.PropertiesFactory --property="" elasticsearch.config
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-custom-resource --restype java.util.Properties --factoryclass org.glassfish.resources.custom.factory.PropertiesFactory --property="" office.config
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-jdbc-connection-pool --restype javax.sql.ConnectionPoolDataSource --datasourceclassname com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource --property="" DocDokuPLMPool
- ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-jdbc-resource --connectionpoolid DocDokuPLMPool jdbc/docdokuplm
+ ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-jdbc-resource --connectionpoolid DocDokuPLMPool jdbc/docdokuPU
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-jvm-options -Dfile.encoding=UTF-8
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile delete-jvm-options '-Xmx512m'
  ${ASADMIN_PATH}/asadmin --user admin --passwordfile=/opt/pwdfile create-jvm-options -Xmx${HEAP_SIZE}
